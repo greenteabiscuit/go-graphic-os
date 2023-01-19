@@ -40,6 +40,9 @@ func main() {
 	boxFill8(xsize, xsize-47, ysize-23, xsize-47, ysize-4, DARKGRAY)
 	boxFill8(xsize, xsize-47, ysize-3, xsize-4, ysize-3, WHITE)
 	boxFill8(xsize, xsize-3, ysize-24, xsize-3, ysize-3, WHITE)
+
+	putfont8Asc(xsize, 11, 11, WHITE, []byte("Golang OS"))
+	putfont8Asc(xsize, 10, 10, BLACK, []byte("Golang OS"))
 }
 
 func boxFill8(xsize, x0, y0, x1, y1 int, color uint16) {
@@ -55,6 +58,43 @@ func boxFill8(xsize, x0, y0, x1, y1 int, color uint16) {
 func delay(v int) {
 	for i := 0; i < 684000; i++ {
 		for j := 0; j < v; j++ {
+		}
+	}
+}
+
+func putfont8Asc(xsize, x, y int, color uint16, s []byte) {
+	for _, b := range s {
+		putfont8(xsize, x, y, color, Letters[int(b)*16:])
+		x += 8
+	}
+}
+
+func putfont8(xsize, x, y int, color uint16, font []byte) {
+	for i := 0; i < 16; i++ {
+		d := font[i]
+		if d&0x80 != 0 {
+			*(*uint16)(unsafe.Pointer(fbPhysAddr + uintptr(y+i)*uintptr(xsize) + uintptr(x) + 0)) = color
+		}
+		if d&0x40 != 0 {
+			*(*uint16)(unsafe.Pointer(fbPhysAddr + uintptr(y+i)*uintptr(xsize) + uintptr(x) + 1)) = color
+		}
+		if d&0x20 != 0 {
+			*(*uint16)(unsafe.Pointer(fbPhysAddr + uintptr(y+i)*uintptr(xsize) + uintptr(x) + 2)) = color
+		}
+		if d&0x10 != 0 {
+			*(*uint16)(unsafe.Pointer(fbPhysAddr + uintptr(y+i)*uintptr(xsize) + uintptr(x) + 3)) = color
+		}
+		if d&0x08 != 0 {
+			*(*uint16)(unsafe.Pointer(fbPhysAddr + uintptr(y+i)*uintptr(xsize) + uintptr(x) + 4)) = color
+		}
+		if d&0x04 != 0 {
+			*(*uint16)(unsafe.Pointer(fbPhysAddr + uintptr(y+i)*uintptr(xsize) + uintptr(x) + 5)) = color
+		}
+		if d&0x02 != 0 {
+			*(*uint16)(unsafe.Pointer(fbPhysAddr + uintptr(y+i)*uintptr(xsize) + uintptr(x) + 6)) = color
+		}
+		if d&0x01 != 0 {
+			*(*uint16)(unsafe.Pointer(fbPhysAddr + uintptr(y+i)*uintptr(xsize) + uintptr(x) + 7)) = color
 		}
 	}
 }
