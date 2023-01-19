@@ -44,8 +44,11 @@ func main() {
 	putfont8Asc(xsize, 11, 11, WHITE, []byte("Welcome to Golang OS"))
 	putfont8Asc(xsize, 10, 10, BLACK, []byte("Welcome to Golang OS"))
 
-	putfont8Asc(xsize, 11, 31, WHITE, []byte("Written in go + asm"))
-	putfont8Asc(xsize, 10, 30, BLACK, []byte("Written in go + asm"))
+	boxFill8(xsize, 79, 49, 241, 81, BLACK)
+	boxFill8(xsize, 80, 50, 240, 80, WHITE)
+	putfont8Asc(xsize, 80, 61, WHITE, []byte("Written in go + asm!"))
+	putfont8Asc(xsize, 80, 60, BLACK, []byte("Written in go + asm!"))
+	triangleFill8(xsize, 150, 80, 170, 130, WHITE)
 
 	mouse := [256]uint16{}
 	cursor := "**************.." +
@@ -137,6 +140,17 @@ func boxFill8(xsize, x0, y0, x1, y1 int, color uint16) {
 		for x := x0; x <= x1; x++ {
 			*(*uint16)(unsafe.Pointer(fbPhysAddr + uintptr(y*xsize) + uintptr(x))) = color
 		}
+	}
+}
+
+func triangleFill8(xsize, x0, y0, x1, y1 int, color uint16) {
+	tmpX0, tmpX1 := x0, x1
+	for y := y0; y <= y1; y++ {
+		for x := tmpX0; x <= tmpX1; x++ {
+			*(*uint16)(unsafe.Pointer(fbPhysAddr + uintptr(y*xsize) + uintptr(x))) = color
+		}
+		tmpX0++
+		tmpX1--
 	}
 }
 
