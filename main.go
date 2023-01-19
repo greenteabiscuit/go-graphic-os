@@ -78,7 +78,47 @@ func main() {
 		}
 	}
 
+	pikachuAscii :=
+		"wwwwwbbwwwwwwwwwbwww" + //20
+			"wwwwbbbwwwwwwwwbybww" + //19
+			"wwwwbybwwwwwwwbyyybw" + //18
+			"wwwbyybwwwwbbbyyyybw" + //17
+			"wwwbyybwwbbbbbyyybww" + //16
+			"wwbyyyybbyybbyyybwww" + //15
+			"wbyyyyyyyyybbyybwwww" + //14
+			"bwyyyyyyyyybwbyybwww" + //13
+			"bbyyyyyyyyybwwbybwww" + //12
+			"byyyywbyyyyybbybwwww" + //11
+			"wbyyybbrryyybbbwwwww" + //10
+			"wwbyyyyryyybbbwwwwww" + //9
+			"wbyyyyyyyyyyybwwwwww" + // 8
+			"wwbbyyyyybyybbwwwwww" + //7
+			"wwwbyyyybyyyybwwwwww" + //6
+			"wwbybyyyybyyybwwwwww" + //5
+			"wwbbbbbbyyyyybwwwwww" + //4
+			"wwwwwwwbbbybbwwwwwww" + //3
+			"wwwwwwwwbyyybwwwwwww" + //2
+			"wwwwwwwwwbbbwwwwwwww" // 1
+	pikachu := [400]uint16{}
+	for y := 0; y < 20; y++ {
+		for x := 0; x < 20; x++ {
+			switch pikachuAscii[y*20+x] {
+			case 'b':
+				pikachu[y*20+x] = BLACK
+			case 'w':
+				pikachu[y*20+x] = WHITE
+			case 'y':
+				pikachu[y*20+x] = YELLOW
+			case 'r':
+				pikachu[y*20+x] = RED
+			default:
+				pikachu[y*20+x] = DARKGRAY
+			}
+		}
+	}
+
 	putBlock8_8(xsize, 16, 16, 100, 100, 16, mouse[:])
+	putBlock8_8(xsize, 20, 20, 150, 100, 20, pikachu[:])
 }
 
 func boxFill8(xsize, x0, y0, x1, y1 int, color uint16) {
