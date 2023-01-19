@@ -1,11 +1,25 @@
 # go-graphic-os
 
 This is a graphic mode kernel written in go,
-based on the Bare Metal Gophers repository.
+based on the [Bare Metal Gophers](https://github.com/achilleasa/bare-metal-gophers) repository.
 
 ## How it looks
 
+The kernel currently looks like this (you can't move the mouse yet.):
 
+![image](img/image.png)
+
+## Future work needed
+
+Some of our future work include
+
+- fixing the weird vertical line next to the mouse and Pikachu
+- adding interrupts so that the kernel can receive signals from the keyboard and mouse
+- we currently can only print out byte arrays, which means that printing numbers on the screen won't work. We need to prepare a function to convert numbers to byte arrays
+
+Merge requests are welcome!
+
+====================================================================
 
 Below is basically the same readme as the original repository.
 
