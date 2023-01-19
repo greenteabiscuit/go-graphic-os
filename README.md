@@ -3,9 +3,7 @@
 This is a graphic mode kernel written in go,
 based on the [Bare Metal Gophers](https://github.com/achilleasa/bare-metal-gophers) repository.
 
-The detailed description of the code is written in this blog.
-
-https://medium.com/@reishim0731/writing-a-32-bit-graphic-mode-kernel-in-golang-d113b8e59720
+The detailed description of the code is written in [this Medium blog](https://medium.com/@reishim0731/writing-a-32-bit-graphic-mode-kernel-in-golang-d113b8e59720).
 
 ## How it looks
 
