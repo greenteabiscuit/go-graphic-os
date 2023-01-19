@@ -1,9 +1,13 @@
-# Bare Metal Gophers
+# go-graphic-os
 
-This repository contains the demo code for the GolangUK2017 talk 
-"Bare Metal Gophers: Can you write a kernel in Go?".
+This is a graphic mode kernel written in go,
+based on the Bare Metal Gophers repository.
 
-The slides for the talk are available [here](https://speakerdeck.com/achilleasa/bare-metal-gophers-can-you-write-an-os-kernel-in-go).
+## How it looks
+
+
+
+Below is basically the same readme as the original repository.
 
 ## Requirements 
 
@@ -59,11 +63,3 @@ supported:
 - `gdb`: compile the code, build an ISO file, run it using qemu and start a gdb session.
 - `iso`: compile the code and build a bootable ISO using grub as the bootloader.
 - `kernel`: compile the code into an elf binary.
-
-## How does it look?
-
-If you are curious what the demo looks like but do not want to actually build
-and run it, here is a screen capture of it running under virtualbox:
-
-![running under virtualbox](img/bare-metal-gophers.gif)
-# go-graphic-os
